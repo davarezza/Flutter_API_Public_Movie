@@ -67,7 +67,7 @@ class _MovieListState extends State<MovieList> {
                       ),
                       SizedBox(height: 14),
                       Text(
-                        'Description',
+                        'Overview',
                         style: TextStyle(fontWeight: FontWeight.bold),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -79,9 +79,20 @@ class _MovieListState extends State<MovieList> {
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 8),
-                      Text(
-                        '⭐ ${movies?[position].voteAverage.toString() ?? ''}/10',
-                        style: TextStyle(fontSize: 16),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                            size: 20,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            movies?[position].voteAverage.toString() ?? '',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          SizedBox(width: 8),
+                        ],
                       ),
                       SizedBox(height: 8),
                       ElevatedButton(
