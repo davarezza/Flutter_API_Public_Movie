@@ -4,6 +4,8 @@ import 'package:movie/service/http_service.dart';
 import 'package:movie/models/movie.dart';
 
 class MovieList extends StatefulWidget {
+  const MovieList({super.key});
+
   @override
   _MovieListState createState() => _MovieListState();
 }
@@ -30,7 +32,7 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Popular Movies",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
@@ -38,8 +40,8 @@ class _MovieListState extends State<MovieList> {
       body: ListView.builder(
         itemCount: moviesCount ?? 0,
         itemBuilder: (context, int position) {
-          String path = movies?[position].posterPath != null && movies![position].posterPath!.isNotEmpty
-              ? 'https://image.tmdb.org/t/p/w500/' + movies![position].posterPath!
+          String path = movies?[position].posterPath != null && movies![position].posterPath.isNotEmpty
+              ? 'https://image.tmdb.org/t/p/w500/${movies![position].posterPath}'
               : 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
 
           return Padding(
@@ -56,45 +58,45 @@ class _MovieListState extends State<MovieList> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         movies?[position].title ?? '',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 14),
-                      Text(
+                      const SizedBox(height: 14),
+                      const Text(
                         'Overview',
                         style: TextStyle(fontWeight: FontWeight.bold),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
                         movies?[position].overview ?? '',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Colors.yellow,
                             size: 20,
                           ),
-                          SizedBox(width: 4),
+                          const SizedBox(width: 4),
                           Text(
                             movies?[position].voteAverage.toString() ?? '',
-                            style: TextStyle(fontSize: 16),
+                            style: const TextStyle(fontSize: 16),
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                         ],
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -104,7 +106,7 @@ class _MovieListState extends State<MovieList> {
                             ),
                           );
                         },
-                        child: Text('Details'),
+                        child: const Text('Details'),
                       ),
                     ],
                   ),

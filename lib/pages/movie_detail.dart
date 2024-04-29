@@ -5,18 +5,13 @@ class MovieDetail extends StatelessWidget {
   final Movie movie;
   final String imgPath = 'https://image.tmdb.org/t/p/w500/';
 
-  MovieDetail(this.movie);
+  const MovieDetail(this.movie, {super.key});
 
   @override
   Widget build(BuildContext context) {
     String path;
-    if (movie.posterPath != null) {
-      path = imgPath + movie.posterPath!;
-    } else {
-      path =
-          'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
-    }
-    double height = MediaQuery.of(context).size.height;
+    path = imgPath + movie.posterPath;
+      double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +25,7 @@ class MovieDetail extends StatelessWidget {
               Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
-                  Container(
+                  SizedBox(
                     height: height / 1.7,
                     width: width,
                     child: Image.network(
@@ -41,32 +36,32 @@ class MovieDetail extends StatelessWidget {
                   Container(
                     width: width,
                     color: Colors.black.withOpacity(0.5),
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
                           movie.title,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star,
                               color: Colors.yellow,
                               size: 20,
                             ),
-                            SizedBox(width: 4),
+                            const SizedBox(width: 4),
                             Text(
                               '${movie.voteAverage}/10',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
@@ -79,8 +74,8 @@ class MovieDetail extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              Padding(
+              const SizedBox(height: 16),
+              const Padding(
                 padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                 child: Text(
                   'Overview',
@@ -90,17 +85,17 @@ class MovieDetail extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Padding(
-                padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                 child: Text(
                   movie.overview,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -110,69 +105,69 @@ class MovieDetail extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Watch Movie'),
-                              content: Text(
+                              title: const Text('Watch Movie'),
+                              content: const Text(
                                   'This feature is still under development.'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('Close'),
+                                  child: const Text('Close'),
                                 ),
                               ],
                             );
                           },
                         );
                       },
-                      icon: Icon(Icons.play_arrow),
-                      label: Text('Watch Movie'),
+                      icon: const Icon(Icons.play_arrow),
+                      label: const Text('Watch Movie'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     ElevatedButton.icon(
                       onPressed: () {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Watch Later'),
-                              content: Text(
+                              title: const Text('Watch Later'),
+                              content: const Text(
                                   'You have added this movie to your watch list.'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('Close'),
+                                  child: const Text('Close'),
                                 ),
                               ],
                             );
                           },
                         );
                       },
-                      icon: Icon(Icons.watch_later),
-                      label: Text('Watch Later'),
+                      icon: const Icon(Icons.watch_later),
+                      label: const Text('Watch Later'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),
